@@ -4,7 +4,8 @@
   "description": "FESP_project",
   "main": "client/entry.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flow": "flow"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,7 @@
     "@babel/core": "^7.3.4",
     "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
-    "babel-cli": "^6.26.0",
+    "@babel/preset-flow": "^7.0.0",
     "flow-bin": "^0.94.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
