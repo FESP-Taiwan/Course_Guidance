@@ -1,0 +1,30 @@
+{
+  "name": "course_guidance",
+  "version": "1.0.0",
+  "description": "FESP_project",
+  "main": "client/entry.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FESP-Taiwan/Course_Guidance.git"
+  },
+  "author": "Lai-Cheng-Yen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FESP-Taiwan/Course_Guidance/issues"
+  },
+  "homepage": "https://github.com/FESP-Taiwan/Course_Guidance#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "babel-cli": "^6.26.0",
+    "flow-bin": "^0.94.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
