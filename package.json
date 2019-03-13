@@ -43,6 +43,23 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "@babel/runtime": "^7.3.4"
+    "@babel/runtime": "^7.3.4",
+    "debug": "^4.1.1",
+    "history": "^4.7.2",
+    "js-combinatorics": "^0.5.4",
+    "radium": "^0.25.1",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-hot-loader": "^4.8.0",
+    "react-redux": "^6.0.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
+    "react-transition-group": "^2.6.0",
+    "redux": "^4.0.1",
+    "redux-form": "^8.1.0",
+    "redux-middleware-fetch": "^0.1.14",
+    "redux-thunk": "^2.3.0",
+    "style-loader": "^0.23.1"
   }
 }
