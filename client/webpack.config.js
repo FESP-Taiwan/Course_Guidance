@@ -11,7 +11,7 @@ const productionPlugins = [];
 
 const developmentEntries = [
   'react-hot-loader/patch',
-  'webpack-dev-server/client?http://localhost:8200',
+  'webpack-dev-server/client?http://localhost:8000',
   'webpack/hot/only-dev-server',
 ];
 
@@ -43,7 +43,7 @@ module.exports = {
     ],
     publicPath: '/',
     compress: true,
-    port: 8200,
+    port: 8000,
     filename: 'bundle.js',
     historyApiFallback: true,
     host: '0.0.0.0',

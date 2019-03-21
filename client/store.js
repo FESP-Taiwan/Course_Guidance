@@ -12,6 +12,12 @@ import { routerMiddleware } from 'react-router-redux';
 import fetchMiddleware from 'redux-middleware-fetch';
 import reducers from './reducers/index';
 
+declare var module: {
+  hot: {
+    accept: (path: ?string, callback: ?() => void) => void
+  }
+}
+
 /* eslint-enable */
 export const history = createHistory();
 
