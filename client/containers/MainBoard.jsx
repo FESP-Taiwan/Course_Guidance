@@ -15,10 +15,10 @@ import background from '../static/images/project-p1-bgi.png';
 
 const borderAnimation = radium.keyframes({
   '0%': {
-    width: 125,
-    height: 125,
-    right: 10,
-    top: 10,
+    width: 105,
+    height: 105,
+    right: 20,
+    top: 20,
     opacity: 1,
   },
   '100%': {
@@ -72,22 +72,36 @@ const styles = {
     borderRadius: '50%',
   },
   circle: {
-    width: 125,
-    height: 125,
+    width: 105,
+    height: 105,
     backgroundColor: '#ffffff',
     borderRadius: '50%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 300,
+    transitionDuration: '0.5s',
+    ':hover': {
+      width: 145,
+      height: 145,
+    },
+  },
+  text: {
     fontSize: 20,
-    lineHeight: '105px',
+    position: 'relative',
+    lineHeight: 1,
+    backgroundColor: 'transparent',
     textAlign: 'center',
+    transitionDuration: '0.5s',
+    ':hover': {
+      fontSize: 25,
+    },
   },
   circleBorder: {
     border: 'solid 3px #ffffff',
     backgroundColor: 'transparent',
-    width: 125,
-    height: 125,
+    width: 105,
+    height: 105,
     position: 'absolute',
     opacity: 0.5,
     right: 10,
@@ -111,10 +125,10 @@ class MainBoard extends PureComponent<Props> {
         <main style={styles.mainWrapper}>
           <div style={styles.start}>
             <button style={styles.btnWrapper} type="button">
-              <div style={styles.circle}>
-                START
+              <div style={styles.circleBorder} />
+              <div style={styles.circle} key="circle">
+                <span style={styles.text} key="text">START</span>
               </div>
-              <div style={styles.circleBorder} key="circleBorder" />
             </button>
             <div style={styles.line} />
           </div>
