@@ -2,6 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import radium from 'radium';
+import { Link } from 'react-router-dom';
 
 const borderAnimation = radium.keyframes({
   '0%': {
@@ -64,6 +65,7 @@ const styles = {
     },
   },
   text: {
+    color: '#333333',
     fontSize: 20,
     position: 'relative',
     lineHeight: 3,
@@ -89,6 +91,9 @@ const styles = {
     animationIterationCount: 'infinite',
     animationTimingFunction: 'ease',
   },
+  linkStyle: {
+    textDecoration: 'none',
+  },
 };
 
 type Props = {
@@ -103,7 +108,9 @@ class MainPage extends PureComponent<Props> {
           <button style={styles.btnWrapper} type="button">
             <div style={styles.circleBorder} />
             <div style={styles.circle} key="circle">
-              <span style={styles.text} key="text">START</span>
+              <Link style={styles.linkStyle} to="/courseGuidance">
+                <span style={styles.text} key="text">START</span>
+              </Link>
             </div>
           </button>
           <div style={styles.line} />
