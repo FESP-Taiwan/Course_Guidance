@@ -15,7 +15,7 @@ import radium from 'radium';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import background from '../static/images/project-p1-bgi.png';
-import SelectionPage from './CourseGuidingPage/SelectionPage';
+import CourseGuidingPage from './CourseGuidingPage/CourseGuidingPage';
 import MainPage from '../components/Main/MainPage';
 
 const styles = {
@@ -35,12 +35,10 @@ const styles = {
   screen: {
     width: '100%',
     height: '100%',
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    whiteSpace: 'no-wrap',
+    whiteSpace: 'nowrap',
     overflow: 'hidden',
     transitionDuration: '1s',
+    fontSize: 0,
   },
 };
 
@@ -54,7 +52,7 @@ class MainBoard extends PureComponent<Props> {
       <div style={styles.placement}>
         <div style={styles.screen}>
           <MainPage />
-          <Route path="/courseGuidance" component={SelectionPage} />
+          <CourseGuidingPage />
         </div>
       </div>
     );
