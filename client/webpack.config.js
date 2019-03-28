@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      API_HOST: `'${process.env.API_HOST || ''}'`,
+      API_HOST: `'${process.env.API_HOST || 'http://4aee148d.ngrok.io'}'`,
       __DEV__: process.env.WEBPACK_MODE !== 'production',
     }),
     ...(process.env.WEBPACK_MODE !== 'production' ? developmentPlugins : productionPlugins),

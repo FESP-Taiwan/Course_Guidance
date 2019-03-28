@@ -1,11 +1,7 @@
 // @flow
 
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import radium from 'radium';
-import { Link } from 'react-router-dom';
-import * as CourseGuidingAction from '../../actions/CourseGuiding';
 
 const borderAnimation = radium.keyframes({
   '0%': {
@@ -25,23 +21,6 @@ const borderAnimation = radium.keyframes({
 }, 'blend');
 
 const styles = {
-  pageWrapper: {
-    position: 'relative',
-    display: 'inline-block',
-    whiteSpace: 'normal',
-    width: '100%',
-    height: '100%',
-    transition: '1s',
-    fontSize: 'initial',
-    verticalAlign: 'top',
-  },
-  mainWrapper: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
   start: {
     display: 'flex',
     alignItems: 'center',
@@ -128,34 +107,19 @@ class MainPage extends PureComponent<Props> {
     } = this.props;
 
     return (
-      <div style={[styles.pageWrapper, {
-        left: `-${pageNumber * 100}%`,
-      }]}>
-        <div style={styles.mainWrapper}>
-          <div style={[styles.start, pageNumber && styles.btnInvisible]}>
-            <button style={styles.btnWrapper} type="button" onClick={() => setPageNumber(1)}>
-              <div style={styles.circleBorder} />
-              <div style={styles.circle} key="circle">
-                <Link style={styles.linkStyle} to="/courseGuidance">
-                  <span style={styles.text} key="text">START</span>
-                </Link>
-              </div>
-            </button>
-            <div style={styles.line} />
+      <div style={[styles.start, pageNumber && styles.btnInvisible]}>
+        <button style={styles.btnWrapper} type="button" onClick={() => setPageNumber(1)}>
+          <div style={styles.circleBorder} />
+          <div style={styles.circle} key="circle">
+            <div style={styles.linkStyle}>
+              <span style={styles.text} key="text">START</span>
+            </div>
           </div>
-        </div>
+        </button>
+        <div style={styles.line} />
       </div>
     );
   }
 }
 
-const reduxHook = connect(
-  state => ({
-    pageNumber: state.CourseGuiding.pageNumber,
-  }),
-  dispatch => bindActionCreators({
-    ...CourseGuidingAction,
-  }, dispatch)
-);
-
-export default reduxHook(radium(MainPage));
+export default radium(MainPage);

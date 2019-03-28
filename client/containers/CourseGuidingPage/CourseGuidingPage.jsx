@@ -5,13 +5,7 @@ import React, {
   Fragment,
 } from 'react';
 import radium from 'radium';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import SelectionPage from './SelectionPage';
-
-const styles = {
-
-};
+import SelectionPage from './Selection/SelectionPage';
 
 type Props = {
 
