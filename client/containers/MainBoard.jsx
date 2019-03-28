@@ -16,7 +16,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import background from '../static/images/project-p1-bgi.png';
 import CourseGuidingPage from './CourseGuidingPage/CourseGuidingPage';
-import MainPage from '../components/Main/MainPage';
+import MainPage from './Main/MainPage';
 
 const styles = {
   placement: {

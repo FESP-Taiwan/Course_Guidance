@@ -4,8 +4,9 @@ import React, { PureComponent } from 'react';
 import radium from 'radium';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as CourseGuidingAction from '../../actions/CourseGuiding';
-import backgroundCover from '../../static/images/project-p1-bgi-cover.png';
+import SelectionBoard from './SelectionBoard';
+import * as CourseGuidingAction from '../../../actions/CourseGuiding';
+import backgroundCover from '../../../static/images/project-p1-bgi-cover.png';
 
 const styles = {
   pageWrapper: {
@@ -29,12 +30,14 @@ const styles = {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     opacity: 0.7,
+    padding: '20% 0 0 55%',
   },
 };
 
 type Props = {
   pageNumber: number,
   setPageNumber: Function,
+  filterData: Object,
 };
 
 class SelectionPage extends PureComponent<Props> {
@@ -42,14 +45,17 @@ class SelectionPage extends PureComponent<Props> {
     const {
       pageNumber,
       setPageNumber,
+      filterData,
     } = this.props;
+
+    console.log('filterData: ', filterData);
 
     return (
       <div style={[styles.pageWrapper, {
         left: `-${pageNumber * 100}%`,
       }]}>
         <div style={styles.mainWrapper}>
-
+          <SelectionBoard />
         </div>
       </div>
     );
@@ -59,6 +65,7 @@ class SelectionPage extends PureComponent<Props> {
 const reduxHook = connect(
   state => ({
     pageNumber: state.CourseGuiding.pageNumber,
+    filterData: state.CourseGuiding.filterData,
   }),
   dispatch => bindActionCreators({
     ...CourseGuidingAction,
