@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import SelectionBoard from './SelectionBoard';
 import * as CourseGuidingAction from '../../../actions/CourseGuiding';
-import backgroundCover from '../../../static/images/project-p1-bgi-cover.png';
+import backgroundCover from '../../../static/images/project-p1-bgi-cover2.png';
 
 const styles = {
   pageWrapper: {
@@ -29,7 +29,6 @@ const styles = {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    opacity: 0.7,
     padding: '20% 0 0 55%',
   },
 };
