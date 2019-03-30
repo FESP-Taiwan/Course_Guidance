@@ -36,18 +36,22 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    padding: '0 0 20px 15px',
   },
   maintitle: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    marginBottom: 5,
   },
   mainTitleText: {
     fontSize: 35,
+    lineHeight: '46px',
+    marginRight: 5,
   },
   lightbolb: {
-    width: 30,
-    height: 30,
+    width: 33,
+    height: 33,
   },
   subTitle: {
     fontSize: 30,
