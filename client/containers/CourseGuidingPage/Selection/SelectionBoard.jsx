@@ -10,13 +10,13 @@ import {
 import {
   reduxForm,
   Field,
-  FieldArray,
   formValueSelector,
 } from 'redux-form';
 import * as CourseGuidingAction from '../../../actions/CourseGuiding';
 import { SEARCH_FILTER_FORM } from '../../../shared/form.js';
 import TextInput from '../../../components/formElements/TextInput';
-import TextSelectingModal from '../../../components/Selection/TextSelectingModal';
+import TextSelectingModal from '../../../components/formElements/SelectionElements/TextSelectingModal';
+import TimeSelectingModal from '../../../components/formElements/SelectionElements/TimeSelectingModal';
 import lightbolb from '../../../static/images/lightbulb.png';
 
 const selector = formValueSelector(SEARCH_FILTER_FORM);
@@ -92,19 +92,19 @@ class SelectionBoard extends PureComponent<Props> {
         <div style={styles.mainWrapper}>
           <Field
             name="department"
-            placeholder="系所 Department"
+            buttonText="系所 Department"
             disabled={false}
             component={TextSelectingModal} />
           <Field
             name="department"
-            placeholder="系所 Department"
+            buttonText="年級 Grade"
             disabled={false}
             component={TextSelectingModal} />
           <Field
             name="department"
-            placeholder="系所 Department"
+            buttonText="上課時間 Time"
             disabled={false}
-            component={TextSelectingModal} />
+            component={TimeSelectingModal} />
           <Field
             name="courseName"
             placeholder="課程名稱 Course"

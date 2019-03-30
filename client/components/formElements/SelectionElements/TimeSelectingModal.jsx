@@ -2,6 +2,8 @@
 
 import React, { PureComponent } from 'react';
 import radium from 'radium';
+import AppearModalButton from '../../elements/AppearModalButton';
+import PointButton from '../../elements/PointButton';
 
 const styles = {
   wrapper: {
@@ -18,7 +20,7 @@ type Props = {
     value: number,
     onChange: Function,
   },
-  placeholder: string,
+  buttonText: string,
   disabled: boolean,
 };
 
@@ -26,14 +28,18 @@ type State = {
   isModalAppear: boolean,
 }
 
-class TextSelectingModal extends PureComponent<Props, State> {
+class TimeSelectingModal extends PureComponent<Props, State> {
+  state = {
+    isModalAppear: false,
+  };
+
   render() {
     const {
       input: {
         value,
         onChange,
       },
-      placeholder,
+      buttonText,
       disabled,
     } = this.props;
 
@@ -41,22 +47,18 @@ class TextSelectingModal extends PureComponent<Props, State> {
       isModalAppear,
     } = this.state;
 
+    console.log('isModalAppear: ', isModalAppear);
+
     return (
       <div style={styles.wrapper}>
-        <button
-          type="button"
-          style={styles.btn}
-          onFocus={() => {
-            this.setState({ isModalAppear: true });
-          }}
-          onBlur={() => {
-            this.setState({ isModalAppear: false });
-          }}>
-          <span>{placeholder}</span>
-        </button>
+        <PointButton />
+        <AppearModalButton
+          setModalAppearance={isAppear => this.setState({ isModalAppear: isAppear })}
+          buttonText={buttonText}
+          disabled={disabled} />
       </div>
     );
   }
 }
 
-export default radium(TextSelectingModal);
+export default radium(TimeSelectingModal);
