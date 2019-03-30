@@ -5,7 +5,7 @@ import radium from 'radium';
 
 const styles = {
   btn: {
-
+    cursor: 'pointer',
   },
   btnChecked: {
 
@@ -14,7 +14,7 @@ const styles = {
 
 type Props = {
   setModalAppearance: Function,
-  buttonText: string,
+  placeholder: string,
   disabled: boolean,
 };
 
@@ -22,19 +22,18 @@ class AppearModalButton extends PureComponent<Props> {
   render() {
     const {
       setModalAppearance,
-      buttonText,
+      placeholder,
       disabled,
     } = this.props;
 
     return (
-      <button
-        type="button"
+      <input
+        type="text"
         style={styles.btn}
         disabled={disabled}
+        placeholder={placeholder}
         onFocus={() => setModalAppearance(true)}
-        onBlur={() => setModalAppearance(false)}>
-        <span>{buttonText}</span>
-      </button>
+        onBlur={() => setModalAppearance(false)} />
     );
   }
 }

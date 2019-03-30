@@ -12,7 +12,7 @@ const styles = {
   },
   btn: {
 
-  }
+  },
 };
 
 type Props = {
@@ -20,17 +20,18 @@ type Props = {
     value: number,
     onChange: Function,
   },
-  buttonText: string,
-  disabled: boolean,
+  placeholder: string,
 };
 
 type State = {
   isModalAppear: boolean,
+  disabled: boolean,
 }
 
 class TimeSelectingModal extends PureComponent<Props, State> {
   state = {
     isModalAppear: false,
+    disabled: true,
   };
 
   render() {
@@ -39,22 +40,23 @@ class TimeSelectingModal extends PureComponent<Props, State> {
         value,
         onChange,
       },
-      buttonText,
-      disabled,
+      placeholder,
     } = this.props;
 
     const {
       isModalAppear,
+      disabled,
     } = this.state;
 
     console.log('isModalAppear: ', isModalAppear);
 
     return (
       <div style={styles.wrapper}>
-        <PointButton />
+        <PointButton
+          setDisabled={isDisabled => this.setState({ disabled: isDisabled })} />
         <AppearModalButton
           setModalAppearance={isAppear => this.setState({ isModalAppear: isAppear })}
-          buttonText={buttonText}
+          placeholder={placeholder}
           disabled={disabled} />
       </div>
     );

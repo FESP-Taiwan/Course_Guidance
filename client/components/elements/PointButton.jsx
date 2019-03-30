@@ -15,22 +15,36 @@ const styles = {
   },
 };
 
+type Props ={
+  setDisabled: Function,
+};
+
 type State = {
   isChecked: boolean,
 };
 
-class PointButton extends PureComponent<State> {
+class PointButton extends PureComponent<Props, State> {
   state = {
     isChecked: false,
   };
 
   render() {
     const {
+      setDisabled,
+    } = this.props;
+
+    const {
       isChecked,
     } = this.state;
 
     return (
-      <button style={[styles.btn, isChecked && styles.btnChecked]} type="button" onClick={() => this.setState({ isChecked: !isChecked })} />
+      <button
+        style={[styles.btn, isChecked && styles.btnChecked]}
+        type="button"
+        onClick={() => {
+          this.setState({ isChecked: !isChecked });
+          setDisabled(isChecked);
+        }} />
     );
   }
 }

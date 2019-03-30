@@ -92,28 +92,23 @@ class SelectionBoard extends PureComponent<Props> {
         <div style={styles.mainWrapper}>
           <Field
             name="department"
-            buttonText="系所 Department"
-            disabled={false}
+            placeholder="系所 Department"
             component={TextSelectingModal} />
           <Field
             name="department"
-            buttonText="年級 Grade"
-            disabled={false}
+            placeholder="年級 Grade"
             component={TextSelectingModal} />
           <Field
             name="department"
-            buttonText="上課時間 Time"
-            disabled={false}
+            placeholder="上課時間 Time"
             component={TimeSelectingModal} />
           <Field
             name="courseName"
             placeholder="課程名稱 Course"
-            disabled={false}
             component={TextInput} />
           <Field
             name="teacherName"
             placeholder="授課老師 Teacher"
-            disabled={false}
             component={TextInput} />
         </div>
         <button type="submit" onClick={() => this.submit()}>
