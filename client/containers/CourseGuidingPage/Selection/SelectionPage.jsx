@@ -29,7 +29,7 @@ const styles = {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    padding: '20% 0 0 55%',
+    padding: '18% 0 0 60%',
   },
 };
 

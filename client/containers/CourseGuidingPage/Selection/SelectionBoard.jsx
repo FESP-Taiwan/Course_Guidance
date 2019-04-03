@@ -25,7 +25,7 @@ const styles = {
   wrapper: {
     width: '100%',
     height: '100%',
-    padding: '0 50px',
+    padding: '0 40px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -36,25 +36,25 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    padding: '0 0 20px 15px',
+    padding: '0 0 35px 26px',
   },
   maintitle: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 5,
+    marginBottom: 10,
   },
   mainTitleText: {
-    fontSize: 35,
+    fontSize: 40,
     lineHeight: '46px',
-    marginRight: 5,
+    marginRight: 8,
   },
   lightbolb: {
     width: 33,
     height: 33,
   },
   subTitle: {
-    fontSize: 30,
+    fontSize: 35,
   },
   mainWrapper: {
     display: 'flex',
@@ -96,23 +96,23 @@ class SelectionBoard extends PureComponent<Props> {
         <div style={styles.mainWrapper}>
           <Field
             name="department"
-            placeholder="系所 Department"
+            placeholder="系所    Department"
             component={TextSelectingModal} />
           <Field
             name="department"
-            placeholder="年級 Grade"
+            placeholder="年級    Grade"
             component={TextSelectingModal} />
           <Field
             name="department"
-            placeholder="上課時間 Time"
+            placeholder="上課時間    Time"
             component={TimeSelectingModal} />
           <Field
             name="courseName"
-            placeholder="課程名稱 Course"
+            placeholder="課程名稱    Course"
             component={TextInput} />
           <Field
             name="teacherName"
-            placeholder="授課老師 Teacher"
+            placeholder="授課老師    Teacher"
             component={TextInput} />
         </div>
         <button type="submit" onClick={() => this.submit()}>

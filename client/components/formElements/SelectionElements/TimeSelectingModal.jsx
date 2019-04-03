@@ -8,7 +8,9 @@ import PointButton from '../../elements/PointButton';
 const styles = {
   wrapper: {
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
   },
   btn: {
 

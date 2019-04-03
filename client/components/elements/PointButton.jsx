@@ -9,6 +9,7 @@ const styles = {
     height: 12,
     borderRadius: '50%',
     padding: 0,
+    marginRight: 15,
   },
   btnChecked: {
     backgroundColor: '#333333',
