@@ -12,6 +12,9 @@ const styles = {
     alignItems: 'center',
     marginBottom: 10,
   },
+  blockForPadding: {
+    width: 27,
+  },
 };
 
 type Props = {
@@ -33,6 +36,23 @@ class TextSelectingModal extends PureComponent<Props, State> {
     disabled: true,
   };
 
+  getPointButton() {
+    const {
+      placeholder,
+    } = this.props;
+
+    if (placeholder !== '系所   Department') {
+      return (
+        <PointButton
+          setDisabled={isDisabled => this.setState({ disabled: isDisabled })} />
+      );
+    }
+    this.setState({ disabled: false });
+    return (
+      <div style={styles.blockForPadding} />
+    );
+  }
+
   render() {
     const {
       input: {
@@ -47,14 +67,12 @@ class TextSelectingModal extends PureComponent<Props, State> {
       disabled,
     } = this.state;
 
-    console.log('isModalAppear: ', isModalAppear);
-
     return (
       <div style={styles.wrapper}>
-        <PointButton
-          setDisabled={isDisabled => this.setState({ disabled: isDisabled })} />
+        {this.getPointButton()}
         <AppearModalButton
           setModalAppearance={isAppear => this.setState({ isModalAppear: isAppear })}
+          isModalAppear={isModalAppear}
           placeholder={placeholder}
           disabled={disabled} />
       </div>

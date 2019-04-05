@@ -25,7 +25,7 @@ const styles = {
     top: 0,
     left: 0,
     cursor: 'pointer',
-    fontSize: 27,
+    fontSize: 30,
     textAlign: '40px',
     border: 'none',
     letterSpacing: 1,

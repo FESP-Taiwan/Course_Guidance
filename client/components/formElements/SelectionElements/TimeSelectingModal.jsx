@@ -59,6 +59,7 @@ class TimeSelectingModal extends PureComponent<Props, State> {
         <AppearModalButton
           setModalAppearance={isAppear => this.setState({ isModalAppear: isAppear })}
           placeholder={placeholder}
+          isModalAppear={isModalAppear}
           disabled={disabled} />
       </div>
     );

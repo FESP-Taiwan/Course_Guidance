@@ -11,23 +11,44 @@ const styles = {
   },
   textInput: {
     position: 'absolute',
-    width: 275,
-    height: 40,
-    verticalAlign: 'middle',
-    lineHeight: '40px',
     top: 0,
     left: 0,
+    width: 280,
+    height: 40,
     cursor: 'pointer',
-    fontSize: 27,
-    textAlign: '40px',
+    textAlign: 'right',
+    paddingRight: 220,
     border: 'none',
     letterSpacing: 1,
     transition: '0.5s',
     zIndex: 1000,
+    fontSize: 30,
     backgroundColor: 'transparent',
     ':focus': {
       outline: 'none',
     },
+  },
+  timeTextInput: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: 280,
+    height: 40,
+    cursor: 'pointer',
+    textAlign: 'right',
+    paddingRight: 220,
+    border: 'none',
+    letterSpacing: 1,
+    transition: '0.5s',
+    zIndex: 1000,
+    fontSize: 30,
+    backgroundColor: 'transparent',
+    ':focus': {
+      outline: 'none',
+    },
+  },
+  textInputClicked: {
+    paddingRight: 0,
   },
   bottomLine: {
     position: 'absolute',
@@ -50,19 +71,32 @@ type Props = {
   setModalAppearance: Function,
   placeholder: string,
   disabled: boolean,
+  isModalAppear: boolean,
 };
 
 type State = {
   isMouseEnter: boolean,
+  isPlaceholderTime: boolean,
+  isOnClicked: boolean,
 }
 
 class AppearModalButton extends PureComponent<Props, State> {
-  state = {
-    isMouseEnter: false,
-  };
+  constructor(props) {
+    super(props);
+
+    const {
+      placeholder,
+    } = this.props;
+
+    this.state = {
+      isMouseEnter: false,
+      isPlaceholderTime: placeholder === '上課時間',
+    };
+  }
 
   render() {
     const {
+      isModalAppear,
       setModalAppearance,
       placeholder,
       disabled,
@@ -70,22 +104,30 @@ class AppearModalButton extends PureComponent<Props, State> {
 
     const {
       isMouseEnter,
+      isPlaceholderTime,
     } = this.state;
 
     return (
       <div style={styles.wrapper}>
         <input
-          className={isMouseEnter && !disabled && inputClass}
+          className={(isMouseEnter || isModalAppear) && !disabled ? inputClass : undefined}
           key="inputText"
           type="text"
-          style={styles.textInput}
+          style={[
+            styles.textInput,
+            isModalAppear && styles.textInputClicked,
+            isPlaceholderTime && !isModalAppear && styles.timeTextInput,
+          ]}
           disabled={disabled}
           placeholder={placeholder}
           onMouseEnter={() => this.setState({ isMouseEnter: true })}
           onMouseLeave={() => this.setState({ isMouseEnter: false })}
           onFocus={() => setModalAppearance(true)}
           onBlur={() => setModalAppearance(false)} />
-        <div style={[styles.bottomLine, isMouseEnter && !disabled && styles.btnChecked]} />
+        <div style={[
+          styles.bottomLine,
+          (isMouseEnter || isModalAppear) && !disabled && styles.btnChecked,
+        ]} />
       </div>
     );
   }

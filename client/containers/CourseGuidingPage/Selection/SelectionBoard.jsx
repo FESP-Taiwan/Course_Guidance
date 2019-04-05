@@ -54,7 +54,7 @@ const styles = {
     height: 33,
   },
   subTitle: {
-    fontSize: 35,
+    fontSize: 33,
   },
   mainWrapper: {
     display: 'flex',
@@ -96,23 +96,23 @@ class SelectionBoard extends PureComponent<Props> {
         <div style={styles.mainWrapper}>
           <Field
             name="department"
-            placeholder="系所    Department"
+            placeholder="系所"
             component={TextSelectingModal} />
           <Field
             name="department"
-            placeholder="年級    Grade"
+            placeholder="年級"
             component={TextSelectingModal} />
           <Field
             name="department"
-            placeholder="上課時間    Time"
+            placeholder="上課時間"
             component={TimeSelectingModal} />
           <Field
             name="courseName"
-            placeholder="課程名稱    Course"
+            placeholder="課程名稱"
             component={TextInput} />
           <Field
             name="teacherName"
-            placeholder="授課老師    Teacher"
+            placeholder="授課老師"
             component={TextInput} />
         </div>
         <button type="submit" onClick={() => this.submit()}>
