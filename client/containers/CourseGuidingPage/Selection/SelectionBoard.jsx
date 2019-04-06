@@ -99,12 +99,12 @@ class SelectionBoard extends PureComponent<Props> {
             placeholder="系所"
             component={TextSelectingModal} />
           <Field
-            name="department"
+            name="grade"
             placeholder="年級"
             component={TextSelectingModal} />
           <Field
-            name="department"
-            placeholder="上課時間"
+            name="courseTime"
+            placeholder="授課時間"
             component={TimeSelectingModal} />
           <Field
             name="courseName"
@@ -133,6 +133,9 @@ const reduxHook = connect(
 const formHook = reduxForm({
   form: SEARCH_FILTER_FORM,
   initialValues: {
+    department: '',
+    grade: '',
+    courseTime: '',
     courseName: '',
   },
 });

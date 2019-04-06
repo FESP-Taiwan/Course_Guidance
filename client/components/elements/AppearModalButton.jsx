@@ -17,26 +17,6 @@ const styles = {
     height: 40,
     cursor: 'pointer',
     textAlign: 'right',
-    paddingRight: 220,
-    border: 'none',
-    letterSpacing: 1,
-    transition: '0.5s',
-    zIndex: 1000,
-    fontSize: 30,
-    backgroundColor: 'transparent',
-    ':focus': {
-      outline: 'none',
-    },
-  },
-  timeTextInput: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: 280,
-    height: 40,
-    cursor: 'pointer',
-    textAlign: 'right',
-    paddingRight: 220,
     border: 'none',
     letterSpacing: 1,
     transition: '0.5s',
@@ -72,12 +52,14 @@ type Props = {
   placeholder: string,
   disabled: boolean,
   isModalAppear: boolean,
+  value: string,
+  onChange: Function,
 };
 
 type State = {
   isMouseEnter: boolean,
-  isPlaceholderTime: boolean,
-  isOnClicked: boolean,
+  placeholderLength: Array,
+  valueLength: Array,
 }
 
 class AppearModalButton extends PureComponent<Props, State> {
@@ -90,8 +72,27 @@ class AppearModalButton extends PureComponent<Props, State> {
 
     this.state = {
       isMouseEnter: false,
-      isPlaceholderTime: placeholder === '上課時間',
+      placeholderLength: placeholder.split(''),
+      valueLength: [],
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      value,
+    } = this.props;
+
+    if (prevProps.value !== value) {
+      this.updateValueLength();
+    }
+  }
+
+  updateValueLength() {
+    const {
+      value,
+    } = this.props;
+
+    this.setState({ valueLength: value.split('') });
   }
 
   render() {
@@ -100,11 +101,14 @@ class AppearModalButton extends PureComponent<Props, State> {
       setModalAppearance,
       placeholder,
       disabled,
+      onChange,
+      value,
     } = this.props;
 
     const {
       isMouseEnter,
-      isPlaceholderTime,
+      placeholderLength,
+      valueLength,
     } = this.state;
 
     return (
@@ -115,11 +119,17 @@ class AppearModalButton extends PureComponent<Props, State> {
           type="text"
           style={[
             styles.textInput,
+            value ? {
+              paddingRight: `${279 - valueLength.length * 30}px`,
+            } : {
+              paddingRight: `${279 - placeholderLength.length * 30}px`,
+            },
             isModalAppear && styles.textInputClicked,
-            isPlaceholderTime && !isModalAppear && styles.timeTextInput,
           ]}
           disabled={disabled}
           placeholder={placeholder}
+          value={value}
+          onChange={onChange}
           onMouseEnter={() => this.setState({ isMouseEnter: true })}
           onMouseLeave={() => this.setState({ isMouseEnter: false })}
           onFocus={() => setModalAppearance(true)}

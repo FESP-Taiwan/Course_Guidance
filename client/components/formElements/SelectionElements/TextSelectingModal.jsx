@@ -41,7 +41,7 @@ class TextSelectingModal extends PureComponent<Props, State> {
       placeholder,
     } = this.props;
 
-    if (placeholder !== '系所   Department') {
+    if (placeholder !== '系所') {
       return (
         <PointButton
           setDisabled={isDisabled => this.setState({ disabled: isDisabled })} />
@@ -74,7 +74,9 @@ class TextSelectingModal extends PureComponent<Props, State> {
           setModalAppearance={isAppear => this.setState({ isModalAppear: isAppear })}
           isModalAppear={isModalAppear}
           placeholder={placeholder}
-          disabled={disabled} />
+          disabled={disabled}
+          value={value}
+          onChange={onChange} />
       </div>
     );
   }
