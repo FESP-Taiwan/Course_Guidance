@@ -14,7 +14,7 @@ import {
 } from 'redux-form';
 import * as CourseGuidingAction from '../../../actions/CourseGuiding';
 import { SEARCH_FILTER_FORM } from '../../../shared/form.js';
-import TextInput from '../../../components/formElements/TextInput';
+import TextInputModal from '../../../components/formElements/SelectionElements/TextInputModal';
 import TextSelectingModal from '../../../components/formElements/SelectionElements/TextSelectingModal';
 import TimeSelectingModal from '../../../components/formElements/SelectionElements/TimeSelectingModal';
 import lightbolb from '../../../static/images/lightbulb.png';
@@ -25,7 +25,7 @@ const styles = {
   wrapper: {
     width: '100%',
     height: '100%',
-    padding: '0 50px',
+    padding: '0 40px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -36,25 +36,25 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    padding: '0 0 20px 15px',
+    padding: '0 0 35px 26px',
   },
   maintitle: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 5,
+    marginBottom: 10,
   },
   mainTitleText: {
-    fontSize: 35,
+    fontSize: 40,
     lineHeight: '46px',
-    marginRight: 5,
+    marginRight: 8,
   },
   lightbolb: {
     width: 33,
     height: 33,
   },
   subTitle: {
-    fontSize: 30,
+    fontSize: 33,
   },
   mainWrapper: {
     display: 'flex',
@@ -96,24 +96,29 @@ class SelectionBoard extends PureComponent<Props> {
         <div style={styles.mainWrapper}>
           <Field
             name="department"
-            placeholder="系所 Department"
+            id={1}
+            placeholder="系所"
             component={TextSelectingModal} />
           <Field
-            name="department"
-            placeholder="年級 Grade"
+            name="grade"
+            id={2}
+            placeholder="年級"
             component={TextSelectingModal} />
           <Field
-            name="department"
-            placeholder="上課時間 Time"
+            name="courseTime"
+            id={3}
+            placeholder="上課時間"
             component={TimeSelectingModal} />
           <Field
             name="courseName"
-            placeholder="課程名稱 Course"
-            component={TextInput} />
+            id={4}
+            placeholder="課程名稱"
+            component={TextInputModal} />
           <Field
             name="teacherName"
-            placeholder="授課老師 Teacher"
-            component={TextInput} />
+            id={5}
+            placeholder="授課老師"
+            component={TextInputModal} />
         </div>
         <button type="submit" onClick={() => this.submit()}>
           <span>Submit</span>
@@ -133,6 +138,9 @@ const reduxHook = connect(
 const formHook = reduxForm({
   form: SEARCH_FILTER_FORM,
   initialValues: {
+    department: '',
+    grade: '',
+    courseTime: '',
     courseName: '',
   },
 });

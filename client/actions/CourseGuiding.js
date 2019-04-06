@@ -4,6 +4,7 @@ import { API_REQUEST } from 'redux-middleware-fetch';
 
 export const SET_PAGE_NUMBER = 'COURSE_GUIDING/SET_PAGE_NUMBER';
 export const GET_FILTER_DATA = 'COURSE_GUIDING/GET_FILTER_DATA';
+export const SET_FIELD_NUMBER = 'COURSE_GUIDING/SET_FIELD_NUMBER';
 
 export function setPageNumber(pageNum: number) {
   return {
@@ -13,7 +14,6 @@ export function setPageNumber(pageNum: number) {
 }
 
 export function getFilterData(data: Object) {
-  console.log('data', data);
   return {
     [API_REQUEST]: {
       types: [
@@ -25,5 +25,12 @@ export function getFilterData(data: Object) {
       entrypoint: '/login',
       json: true,
     },
+  };
+}
+
+export function setFieldNumber(fieldNum: number) {
+  return {
+    type: SET_FIELD_NUMBER,
+    fieldNum,
   };
 }

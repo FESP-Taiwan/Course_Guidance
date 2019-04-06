@@ -36,7 +36,7 @@ type State = {
   disabled: boolean,
 }
 
-class TimeSelectingModal extends PureComponent<Props, State> {
+class TextInputModal extends PureComponent<Props, State> {
   state = {
     isOnClicked: false,
     disabled: true,
@@ -98,4 +98,4 @@ const reduxHook = connect(
   }, dispatch)
 );
 
-export default reduxHook(radium(TimeSelectingModal));
+export default reduxHook(radium(TextInputModal));

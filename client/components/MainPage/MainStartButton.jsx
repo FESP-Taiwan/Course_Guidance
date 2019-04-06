@@ -67,6 +67,7 @@ const styles = {
     backgroundColor: 'transparent',
     textAlign: 'center',
     transitionDuration: '0.5s',
+    fontFamily: 'Hoefler Text',
     ':hover': {
       fontSize: 25,
     },

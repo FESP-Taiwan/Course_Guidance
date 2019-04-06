@@ -3,6 +3,7 @@
 import {
   SET_PAGE_NUMBER,
   GET_FILTER_DATA,
+  SET_FIELD_NUMBER,
 } from '../actions/CourseGuiding.js';
 
 type State = {
@@ -11,6 +12,7 @@ type State = {
 
 export default (state: State = {
   pageNumber: 0,
+  fieldNumber: 0,
   filterData: {},
 }, action: any) => {
   switch (action.type) {
@@ -20,10 +22,14 @@ export default (state: State = {
         pageNumber: action.pageNum,
       };
     case GET_FILTER_DATA:
-      console.log('api success');
       return {
         ...state,
         filterData: action.data,
+      };
+    case SET_FIELD_NUMBER:
+      return {
+        ...state,
+        fieldNumber: action.fieldNum,
       };
     default:
       return state;

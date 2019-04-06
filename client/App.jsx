@@ -12,6 +12,9 @@ import { StyleRoot } from 'radium';
 import { Provider } from 'react-redux';
 import MainBoard from './containers/MainBoard';
 
+import './static/styles.css';
+
+
 // Containers
 
 // Debug mode
