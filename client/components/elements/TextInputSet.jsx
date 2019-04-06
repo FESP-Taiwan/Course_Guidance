@@ -48,10 +48,10 @@ const styles = {
 const inputClass = 'input';
 
 type Props = {
-  setModalAppearance: Function,
+  setOnClickedValue: Function,
   placeholder: string,
   disabled: boolean,
-  isModalAppear: boolean,
+  isOnClicked: boolean,
   value: string,
   onChange: Function,
 };
@@ -62,7 +62,7 @@ type State = {
   valueLength: Array<string>,
 }
 
-class AppearModalButton extends PureComponent<Props, State> {
+class TextInputSet extends PureComponent<Props, State> {
   constructor(props) {
     super(props);
 
@@ -97,8 +97,8 @@ class AppearModalButton extends PureComponent<Props, State> {
 
   render() {
     const {
-      isModalAppear,
-      setModalAppearance,
+      isOnClicked,
+      setOnClickedValue,
       placeholder,
       disabled,
       onChange,
@@ -114,17 +114,17 @@ class AppearModalButton extends PureComponent<Props, State> {
     return (
       <div style={styles.wrapper}>
         <input
-          className={(isMouseEnter || isModalAppear) && !disabled ? inputClass : undefined}
+          className={(isMouseEnter || isOnClicked) && !disabled ? inputClass : undefined}
           key="inputText"
           type="text"
           style={[
             styles.textInput,
             value ? {
-              paddingRight: `${279 - valueLength.length * 30}px`,
+              paddingRight: `${277 - valueLength.length * 30}px`,
             } : {
-              paddingRight: `${279 - placeholderLength.length * 30}px`,
+              paddingRight: `${277 - placeholderLength.length * 30}px`,
             },
-            isModalAppear && styles.textInputClicked,
+            isOnClicked && styles.textInputClicked,
           ]}
           disabled={disabled}
           placeholder={placeholder}
@@ -132,15 +132,15 @@ class AppearModalButton extends PureComponent<Props, State> {
           onChange={onChange}
           onMouseEnter={() => this.setState({ isMouseEnter: true })}
           onMouseLeave={() => this.setState({ isMouseEnter: false })}
-          onFocus={() => setModalAppearance(true)}
-          onBlur={() => setModalAppearance(false)} />
+          onFocus={() => setOnClickedValue(true)}
+          onBlur={() => setOnClickedValue(false)} />
         <div style={[
           styles.bottomLine,
-          (isMouseEnter || isModalAppear) && !disabled && styles.btnChecked,
+          (isMouseEnter || isOnClicked) && !disabled && styles.btnChecked,
         ]} />
       </div>
     );
   }
 }
 
-export default radium(AppearModalButton);
+export default radium(TextInputSet);

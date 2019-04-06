@@ -14,7 +14,7 @@ import {
 } from 'redux-form';
 import * as CourseGuidingAction from '../../../actions/CourseGuiding';
 import { SEARCH_FILTER_FORM } from '../../../shared/form.js';
-import TextInput from '../../../components/formElements/TextInput';
+import TextInputModal from '../../../components/formElements/SelectionElements/TextInputModal';
 import TextSelectingModal from '../../../components/formElements/SelectionElements/TextSelectingModal';
 import TimeSelectingModal from '../../../components/formElements/SelectionElements/TimeSelectingModal';
 import lightbolb from '../../../static/images/lightbulb.png';
@@ -109,11 +109,11 @@ class SelectionBoard extends PureComponent<Props> {
           <Field
             name="courseName"
             placeholder="課程名稱"
-            component={TextInput} />
+            component={TextInputModal} />
           <Field
             name="teacherName"
             placeholder="授課老師"
-            component={TextInput} />
+            component={TextInputModal} />
         </div>
         <button type="submit" onClick={() => this.submit()}>
           <span>Submit</span>

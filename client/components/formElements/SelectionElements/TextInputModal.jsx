@@ -12,9 +12,6 @@ const styles = {
     alignItems: 'center',
     marginBottom: 10,
   },
-  blockForPadding: {
-    width: 27,
-  },
 };
 
 type Props = {
@@ -30,28 +27,11 @@ type State = {
   disabled: boolean,
 }
 
-class TextSelectingModal extends PureComponent<Props, State> {
+class TextInputModal extends PureComponent<Props, State> {
   state = {
     isOnClicked: false,
     disabled: true,
   };
-
-  getPointButton() {
-    const {
-      placeholder,
-    } = this.props;
-
-    if (placeholder !== '系所') {
-      return (
-        <PointButton
-          setDisabled={isDisabled => this.setState({ disabled: isDisabled })} />
-      );
-    }
-    this.setState({ disabled: false });
-    return (
-      <div style={styles.blockForPadding} />
-    );
-  }
 
   render() {
     const {
@@ -69,11 +49,12 @@ class TextSelectingModal extends PureComponent<Props, State> {
 
     return (
       <div style={styles.wrapper}>
-        {this.getPointButton()}
+        <PointButton
+          setDisabled={isDisabled => this.setState({ disabled: isDisabled })} />
         <TextInputSet
           setOnClickedValue={isAppear => this.setState({ isOnClicked: isAppear })}
-          isOnClicked={isOnClicked}
           placeholder={placeholder}
+          isOnClicked={isOnClicked}
           disabled={disabled}
           value={value}
           onChange={onChange} />
@@ -82,4 +63,4 @@ class TextSelectingModal extends PureComponent<Props, State> {
   }
 }
 
-export default radium(TextSelectingModal);
+export default radium(TextInputModal);

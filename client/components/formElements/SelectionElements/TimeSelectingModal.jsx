@@ -2,7 +2,7 @@
 
 import React, { PureComponent } from 'react';
 import radium from 'radium';
-import AppearModalButton from '../../elements/AppearModalButton';
+import TextInputSet from '../../elements/TextInputSet';
 import PointButton from '../../elements/PointButton';
 
 const styles = {
@@ -11,9 +11,6 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
-  },
-  btn: {
-
   },
 };
 
@@ -26,13 +23,13 @@ type Props = {
 };
 
 type State = {
-  isModalAppear: boolean,
+  isOnClicked: boolean,
   disabled: boolean,
 }
 
 class TimeSelectingModal extends PureComponent<Props, State> {
   state = {
-    isModalAppear: false,
+    isOnClicked: false,
     disabled: true,
   };
 
@@ -46,21 +43,21 @@ class TimeSelectingModal extends PureComponent<Props, State> {
     } = this.props;
 
     const {
-      isModalAppear,
+      isOnClicked,
       disabled,
     } = this.state;
-
-    console.log('isModalAppear: ', isModalAppear);
 
     return (
       <div style={styles.wrapper}>
         <PointButton
           setDisabled={isDisabled => this.setState({ disabled: isDisabled })} />
-        <AppearModalButton
-          setModalAppearance={isAppear => this.setState({ isModalAppear: isAppear })}
+        <TextInputSet
+          setOnClickedValue={isAppear => this.setState({ isOnClicked: isAppear })}
           placeholder={placeholder}
-          isModalAppear={isModalAppear}
-          disabled={disabled} />
+          isOnClicked={isOnClicked}
+          disabled={disabled}
+          value={value}
+          onChange={onChange} />
       </div>
     );
   }
