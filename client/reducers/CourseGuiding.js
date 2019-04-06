@@ -14,6 +14,14 @@ export default (state: State = {
   pageNumber: 0,
   fieldNumber: 0,
   filterData: {},
+  dropDownData: {
+    1: ['企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系'],
+    2: ['一', '二', '三', '四'],
+    3: {
+      week: ['一', '二', '三', '四', '五'],
+      time: ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二', '十三'],
+    },
+  },
 }, action: any) => {
   switch (action.type) {
     case SET_PAGE_NUMBER:
