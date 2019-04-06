@@ -96,22 +96,27 @@ class SelectionBoard extends PureComponent<Props> {
         <div style={styles.mainWrapper}>
           <Field
             name="department"
+            id={1}
             placeholder="系所"
             component={TextSelectingModal} />
           <Field
             name="grade"
+            id={2}
             placeholder="年級"
             component={TextSelectingModal} />
           <Field
             name="courseTime"
-            placeholder="授課時間"
+            id={3}
+            placeholder="上課時間"
             component={TimeSelectingModal} />
           <Field
             name="courseName"
+            id={4}
             placeholder="課程名稱"
             component={TextInputModal} />
           <Field
             name="teacherName"
+            id={5}
             placeholder="授課老師"
             component={TextInputModal} />
         </div>

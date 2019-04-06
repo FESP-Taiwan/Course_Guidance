@@ -2,6 +2,9 @@
 
 import React, { PureComponent } from 'react';
 import radium from 'radium';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as CourseGuidingAction from '../../../actions/CourseGuiding';
 import TextInputSet from '../../elements/TextInputSet';
 import PointButton from '../../elements/PointButton';
 
@@ -15,6 +18,9 @@ const styles = {
   blockForPadding: {
     width: 27,
   },
+  modalUndisplay: {
+    display: 'none',
+  },
 };
 
 type Props = {
@@ -23,6 +29,9 @@ type Props = {
     onChange: Function,
   },
   placeholder: string,
+  id: number,
+  setFieldNumber: Function,
+  fieldNumber: number,
 };
 
 type State = {
@@ -53,6 +62,20 @@ class TextSelectingModal extends PureComponent<Props, State> {
     );
   }
 
+  setFieldNumber(isFocus: boolean) {
+    const {
+      id,
+      setFieldNumber,
+    } = this.props;
+
+
+    if (isFocus) {
+      setFieldNumber(id);
+      return;
+    }
+    setFieldNumber(0);
+  }
+
   render() {
     const {
       input: {
@@ -60,6 +83,8 @@ class TextSelectingModal extends PureComponent<Props, State> {
         onChange,
       },
       placeholder,
+      id,
+      fieldNumber,
     } = this.props;
 
     const {
@@ -68,7 +93,7 @@ class TextSelectingModal extends PureComponent<Props, State> {
     } = this.state;
 
     return (
-      <div style={styles.wrapper}>
+      <div style={[styles.wrapper, fieldNumber && fieldNumber !== id && styles.modalUndisplay]}>
         {this.getPointButton()}
         <TextInputSet
           setOnClickedValue={isAppear => this.setState({ isOnClicked: isAppear })}
@@ -76,10 +101,20 @@ class TextSelectingModal extends PureComponent<Props, State> {
           placeholder={placeholder}
           disabled={disabled}
           value={value}
-          onChange={onChange} />
+          onChange={onChange}
+          setFieldNumber={isFocus => this.setFieldNumber(isFocus)} />
       </div>
     );
   }
 }
 
-export default radium(TextSelectingModal);
+const reduxHook = connect(
+  state => ({
+    fieldNumber: state.CourseGuiding.fieldNumber,
+  }),
+  dispatch => bindActionCreators({
+    ...CourseGuidingAction,
+  }, dispatch)
+);
+
+export default reduxHook(radium(TextSelectingModal));

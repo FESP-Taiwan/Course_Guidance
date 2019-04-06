@@ -54,6 +54,7 @@ type Props = {
   isOnClicked: boolean,
   value: string,
   onChange: Function,
+  setFieldNumber?: Function,
 };
 
 type State = {
@@ -63,6 +64,10 @@ type State = {
 }
 
 class TextInputSet extends PureComponent<Props, State> {
+  static defaultProps = {
+    setFieldNumber: undefined,
+  }
+
   constructor(props) {
     super(props);
 
@@ -103,6 +108,7 @@ class TextInputSet extends PureComponent<Props, State> {
       disabled,
       onChange,
       value,
+      setFieldNumber,
     } = this.props;
 
     const {
@@ -132,8 +138,18 @@ class TextInputSet extends PureComponent<Props, State> {
           onChange={onChange}
           onMouseEnter={() => this.setState({ isMouseEnter: true })}
           onMouseLeave={() => this.setState({ isMouseEnter: false })}
-          onFocus={() => setOnClickedValue(true)}
-          onBlur={() => setOnClickedValue(false)} />
+          onFocus={() => {
+            setOnClickedValue(true);
+            if (setFieldNumber) {
+              setFieldNumber(true);
+            }
+          }}
+          onBlur={() => {
+            setOnClickedValue(false);
+            if (setFieldNumber) {
+              setFieldNumber(false);
+            }
+          }} />
         <div style={[
           styles.bottomLine,
           (isMouseEnter || isOnClicked) && !disabled && styles.btnChecked,
