@@ -145,10 +145,12 @@ class TextInputSet extends PureComponent<Props, State> {
             }
           }}
           onBlur={() => {
-            setOnClickedValue(false);
-            if (setFieldNumber) {
-              setFieldNumber(false);
-            }
+            setTimeout(() => {
+              setOnClickedValue(false);
+              if (setFieldNumber) {
+                setFieldNumber(false);
+              }
+            }, 150);
           }} />
         <div style={[
           styles.bottomLine,

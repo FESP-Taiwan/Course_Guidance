@@ -19,28 +19,30 @@ const styles = {
     height: 200,
     marginTop: 10,
     transitionDelay: '0.5s',
-    transition: '1s',
+    transitionDuration: '1s',
   },
 };
 
 type Props = {
   dropDownData: Array<string>,
   isAppear: boolean,
+  onChange: Function,
 };
 
-class DropDownList extends PureComponent<Props> {
+class DropDownList extends PureComponent<Props, State> {
   render() {
     const {
       dropDownData,
       isAppear,
+      onChange,
     } = this.props;
 
     return (
       <div style={[styles.wrapper, isAppear && styles.menuDisplay]}>
         {dropDownData.map(item => (
           <DropDownItem
-            key={item}
-            item={item} />
+            item={item}
+            onChange={onChange} />
         ))}
       </div>
     );

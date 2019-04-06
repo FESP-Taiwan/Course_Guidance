@@ -51,6 +51,22 @@ class TextSelectingModal extends PureComponent<Props, State> {
     disabled: true,
   };
 
+  componentDidUpdate(prevState) {
+    const {
+      input: {
+        onChange,
+      },
+    } = this.props;
+
+    const {
+      disabled,
+    } = this.state;
+
+    if (!prevState.disabled && disabled) {
+      onChange('');
+    }
+  }
+
   getPointButton() {
     const {
       placeholder,
@@ -114,7 +130,9 @@ class TextSelectingModal extends PureComponent<Props, State> {
         </div>
         <DropDownList
           dropDownData={dropDownData}
-          isAppear={fieldNumber === id} />
+          isAppear={fieldNumber === id}
+          value={value}
+          onChange={onChange} />
       </div>
     );
   }

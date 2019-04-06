@@ -21,16 +21,21 @@ const styles = {
 
 type Props = {
   item: string,
+  onChange: Function,
 };
 
 class DropDownItem extends PureComponent<Props> {
   render() {
     const {
       item,
+      onChange,
     } = this.props;
 
     return (
-      <button type="button" style={styles.btn}>
+      <button
+        type="button"
+        style={styles.btn}
+        onClick={() => onChange(item)}>
         <span style={styles.text}>{item}</span>
       </button>
     );
