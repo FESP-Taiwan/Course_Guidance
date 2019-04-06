@@ -5,14 +5,14 @@ import radium from 'radium';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as CourseGuidingAction from '../../../actions/CourseGuiding';
+import DropDownList from '../../elements/DropDownMenu/DropDownList';
 import TextInputSet from '../../elements/TextInputSet';
 import PointButton from '../../elements/PointButton';
 
 const styles = {
   wrapper: {
     display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: 'column',
     marginBottom: 10,
   },
   blockForPadding: {
@@ -20,6 +20,11 @@ const styles = {
   },
   modalUndisplay: {
     display: 'none',
+  },
+  inputWrapper: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 };
 
@@ -32,6 +37,7 @@ type Props = {
   id: number,
   setFieldNumber: Function,
   fieldNumber: number,
+  dropDownData: Array<string>,
 };
 
 type State = {
@@ -44,6 +50,22 @@ class TextSelectingModal extends PureComponent<Props, State> {
     isOnClicked: false,
     disabled: true,
   };
+
+  componentDidUpdate(prevState) {
+    const {
+      input: {
+        onChange,
+      },
+    } = this.props;
+
+    const {
+      disabled,
+    } = this.state;
+
+    if (!prevState.disabled && disabled) {
+      onChange('');
+    }
+  }
 
   getPointButton() {
     const {
@@ -85,6 +107,7 @@ class TextSelectingModal extends PureComponent<Props, State> {
       placeholder,
       id,
       fieldNumber,
+      dropDownData,
     } = this.props;
 
     const {
@@ -94,23 +117,33 @@ class TextSelectingModal extends PureComponent<Props, State> {
 
     return (
       <div style={[styles.wrapper, fieldNumber && fieldNumber !== id && styles.modalUndisplay]}>
-        {this.getPointButton()}
-        <TextInputSet
-          setOnClickedValue={isAppear => this.setState({ isOnClicked: isAppear })}
-          isOnClicked={isOnClicked}
-          placeholder={placeholder}
-          disabled={disabled}
+        <div style={styles.inputWrapper}>
+          {this.getPointButton()}
+          <TextInputSet
+            setOnClickedValue={isAppear => this.setState({ isOnClicked: isAppear })}
+            isOnClicked={isOnClicked}
+            placeholder={placeholder}
+            disabled={disabled}
+            value={value}
+            onChange={onChange}
+            setFieldNumber={isFocus => this.setFieldNumber(isFocus)} />
+        </div>
+        <DropDownList
+          dropDownData={dropDownData}
+          isAppear={fieldNumber === id}
           value={value}
-          onChange={onChange}
-          setFieldNumber={isFocus => this.setFieldNumber(isFocus)} />
+          onChange={onChange} />
       </div>
     );
   }
 }
 
 const reduxHook = connect(
-  state => ({
+  (state, {
+    id,
+  }) => ({
     fieldNumber: state.CourseGuiding.fieldNumber,
+    dropDownData: state.CourseGuiding.dropDownData[id],
   }),
   dispatch => bindActionCreators({
     ...CourseGuidingAction,
