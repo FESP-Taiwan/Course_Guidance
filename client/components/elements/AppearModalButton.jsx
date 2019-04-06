@@ -58,8 +58,8 @@ type Props = {
 
 type State = {
   isMouseEnter: boolean,
-  placeholderLength: Array,
-  valueLength: Array,
+  placeholderLength: Array<string>,
+  valueLength: Array<string>,
 }
 
 class AppearModalButton extends PureComponent<Props, State> {

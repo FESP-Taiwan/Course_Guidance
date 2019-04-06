@@ -18,23 +18,24 @@ const styles = {
   },
   textInput: {
     position: 'absolute',
-    width: 275,
-    height: 40,
-    verticalAlign: 'middle',
-    lineHeight: '40px',
     top: 0,
     left: 0,
+    width: 280,
+    height: 40,
     cursor: 'pointer',
-    fontSize: 30,
-    textAlign: '40px',
+    textAlign: 'right',
     border: 'none',
     letterSpacing: 1,
     transition: '0.5s',
     zIndex: 1000,
+    fontSize: 30,
     backgroundColor: 'transparent',
     ':focus': {
       outline: 'none',
     },
+  },
+  textInputClicked: {
+    paddingRight: 0,
   },
   bottomLine: {
     position: 'absolute',
@@ -51,6 +52,8 @@ const styles = {
   },
 };
 
+const inputClass = 'input';
+
 type Props = {
   input: {
     name: string,
@@ -63,13 +66,27 @@ type Props = {
 type State = {
   disabled: boolean,
   isMouseEnter: boolean,
+  isOnClicked: boolean,
+  placeholderLength: Array<string>,
+  valueLength: Array<string>,
 }
 
 class TextInput extends PureComponent<Props, State> {
-  state = {
-    disabled: true,
-    isMouseEnter: false,
-  };
+  constructor(props) {
+    super(props);
+
+    const {
+      placeholder,
+    } = this.props;
+
+    this.state = {
+      disabled: true,
+      isMouseEnter: false,
+      isOnClicked: false,
+      placeholderLength: placeholder.split(''),
+      valueLength: [],
+    };
+  }
 
   render() {
     const {
@@ -83,6 +100,9 @@ class TextInput extends PureComponent<Props, State> {
     const {
       disabled,
       isMouseEnter,
+      isOnClicked,
+      placeholderLength,
+      valueLength,
     } = this.state;
 
     return (
@@ -91,15 +111,29 @@ class TextInput extends PureComponent<Props, State> {
           setDisabled={isDisabled => this.setState({ disabled: isDisabled })} />
         <div style={styles.inputWrapper}>
           <input
+            className={(isMouseEnter || isOnClicked) && !disabled ? inputClass : undefined}
             placeholder={placeholder}
             type="text"
-            style={styles.textInput}
+            style={[
+              styles.textInput,
+              value ? {
+                paddingRight: `${279 - valueLength.length * 30}px`,
+              } : {
+                paddingRight: `${279 - placeholderLength.length * 30}px`,
+              },
+              isOnClicked && styles.textInputClicked,
+            ]}
             value={value}
             disabled={disabled}
             onChange={onChange}
             onMouseEnter={() => this.setState({ isMouseEnter: true })}
-            onMouseLeave={() => this.setState({ isMouseEnter: false })} />
-          <div style={[styles.bottomLine, isMouseEnter && !disabled && styles.btnChecked]} />
+            onMouseLeave={() => this.setState({ isMouseEnter: false })}
+            onFocus={() => this.setState({ isOnClicked: true })}
+            onBlur={() => this.setState({ isOnClicked: false })} />
+          <div style={[
+            styles.bottomLine,
+            (isMouseEnter || isOnClicked) && !disabled && styles.btnChecked,
+          ]} />
         </div>
       </div>
     );
