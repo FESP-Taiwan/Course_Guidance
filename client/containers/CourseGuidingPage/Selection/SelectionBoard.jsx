@@ -127,8 +127,15 @@ class SelectionBoard extends PureComponent<Props> {
               placeholder="年級"
               component={TextSelectingModal} />
           </div>
-          <TimeSelectingArea
-            id={[3, 4, 5]} />
+          <div style={fieldNumber !== 0
+            && fieldNumber !== 3
+            && fieldNumber !== 4
+            && fieldNumber !== 5
+            ? styles.fieldTransition
+            : undefined}>
+            <TimeSelectingArea
+              id={[3, 4, 5]} />
+          </div>
           <div style={[
             styles.fieldWrapper,
             fieldNumber !== 0 && fieldNumber !== 6 && styles.fieldTransition,
