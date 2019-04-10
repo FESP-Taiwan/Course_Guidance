@@ -83,6 +83,7 @@ class TextInputModal extends PureComponent<Props, State> {
           disabled={disabled}
           value={value}
           onChange={onChange}
+          fontSize={30}
           setFieldNumber={isFocus => this.setFieldNumber(isFocus)} />
       </div>
     );

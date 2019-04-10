@@ -13,7 +13,6 @@ const styles = {
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
-    marginBottom: 10,
   },
   blockForPadding: {
     width: 27,
@@ -126,13 +125,15 @@ class TextSelectingModal extends PureComponent<Props, State> {
             disabled={disabled}
             value={value}
             onChange={onChange}
+            fontSize={30}
             setFieldNumber={isFocus => this.setFieldNumber(isFocus)} />
         </div>
         <DropDownList
           dropDownData={dropDownData}
           isAppear={fieldNumber === id}
           value={value}
-          onChange={onChange} />
+          onChange={onChange}
+          paddingRight={20} />
       </div>
     );
   }

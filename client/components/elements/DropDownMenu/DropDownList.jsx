@@ -13,7 +13,6 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-end',
     marginTop: 0,
-    paddingRight: 20,
   },
   menuDisplay: {
     height: 200,
@@ -26,19 +25,25 @@ const styles = {
 type Props = {
   dropDownData: Array<string>,
   isAppear: boolean,
+  paddingRight: number,
   onChange: Function,
 };
 
 class DropDownList extends PureComponent<Props, State> {
   render() {
     const {
+      paddingRight,
       dropDownData,
       isAppear,
       onChange,
     } = this.props;
 
+    console.log(paddingRight);
+
     return (
-      <div style={[styles.wrapper, isAppear && styles.menuDisplay]}>
+      <div style={[styles.wrapper, {
+        paddingRight: `${paddingRight}px`,
+      }, isAppear && styles.menuDisplay]}>
         {dropDownData.map(item => (
           <DropDownItem
             item={item}
