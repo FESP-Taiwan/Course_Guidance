@@ -10,6 +10,7 @@ import TextInputSet from '../../elements/TextInputSet';
 
 const styles = {
   wrapper: {
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
   },

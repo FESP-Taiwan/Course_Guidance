@@ -6,6 +6,9 @@ import DropDownItem from './DropDownItem';
 
 const styles = {
   wrapper: {
+    position: 'absolute',
+    top: 40,
+    left: 0,
     width: 325,
     height: 0,
     overflow: 'auto',
@@ -37,8 +40,6 @@ class DropDownList extends PureComponent<Props, State> {
       isAppear,
       onChange,
     } = this.props;
-
-    console.log(paddingRight);
 
     return (
       <div style={[styles.wrapper, {

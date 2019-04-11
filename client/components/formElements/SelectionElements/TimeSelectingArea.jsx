@@ -28,13 +28,10 @@ const styles = {
     flexDirection: 'column',
   },
   timeFieldWrapper: {
-    height: 40,
-    opacity: 1,
     transition: '0.5s',
   },
   timeFieldTransition: {
-    height: 0,
-    opacity: 0,
+    display: 'none',
   },
   fieldWrapper: {
     height: 0,

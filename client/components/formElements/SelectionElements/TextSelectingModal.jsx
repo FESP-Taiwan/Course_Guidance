@@ -11,6 +11,7 @@ import PointButton from '../../elements/PointButton';
 
 const styles = {
   wrapper: {
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
   },

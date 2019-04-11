@@ -28,7 +28,7 @@ const styles = {
     backgroundImage: `url(${backgroundCover})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundSize: '100% 100%',
     padding: '18% 0 0 60%',
   },
 };
@@ -36,7 +36,6 @@ const styles = {
 type Props = {
   pageNumber: number,
   setPageNumber: Function,
-  filterData: Object,
 };
 
 class SelectionPage extends PureComponent<Props> {
@@ -44,10 +43,7 @@ class SelectionPage extends PureComponent<Props> {
     const {
       pageNumber,
       setPageNumber,
-      filterData,
     } = this.props;
-
-    console.log('filterData: ', filterData);
 
     return (
       <div style={[styles.pageWrapper, {

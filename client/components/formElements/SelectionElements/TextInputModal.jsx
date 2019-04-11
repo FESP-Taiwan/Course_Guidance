@@ -14,6 +14,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+    position: 'relative',
   },
   modalUndisplay: {
     display: 'none',
