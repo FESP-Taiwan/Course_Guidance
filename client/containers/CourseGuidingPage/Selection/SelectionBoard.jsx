@@ -157,7 +157,7 @@ class SelectionBoard extends PureComponent<Props> {
     } = this.props;
     console.log(d);
     getFilterData({
-      userName: 'hoh',
+      ...d,
     });
   }
 

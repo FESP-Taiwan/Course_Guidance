@@ -43,6 +43,22 @@ class TextInputModal extends PureComponent<Props, State> {
     disabled: true,
   };
 
+  componentDidUpdate(prevState) {
+    const {
+      input: {
+        onChange,
+      },
+    } = this.props;
+
+    const {
+      disabled,
+    } = this.state;
+
+    if (!prevState.disabled && disabled) {
+      onChange('');
+    }
+  }
+
   setFieldNumber(isFocus: boolean) {
     const {
       id,
