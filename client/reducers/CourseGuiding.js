@@ -29,6 +29,7 @@ export default (state: State = {
         pageNumber: action.pageNum,
       };
     case GET_FILTER_DATA:
+      console.log(action.data);
       return {
         ...state,
         filterData: action.data,

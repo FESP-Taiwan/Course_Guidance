@@ -22,7 +22,7 @@ export function getFilterData(data: Object) {
       auth: false,
       method: 'POST',
       body: data,
-      entrypoint: '/login',
+      entrypoint: '/course',
       json: true,
     },
   };

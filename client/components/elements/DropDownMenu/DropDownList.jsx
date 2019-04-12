@@ -16,6 +16,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-end',
     marginTop: 0,
+    zIndex: 3000,
   },
   menuDisplay: {
     height: 200,

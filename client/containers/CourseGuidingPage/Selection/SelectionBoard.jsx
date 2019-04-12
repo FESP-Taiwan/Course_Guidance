@@ -10,7 +10,6 @@ import {
 import {
   reduxForm,
   Field,
-  formValueSelector,
 } from 'redux-form';
 import * as CourseGuidingAction from '../../../actions/CourseGuiding';
 import { SEARCH_FILTER_FORM } from '../../../shared/form.js';
@@ -18,8 +17,6 @@ import TextInputModal from '../../../components/formElements/SelectionElements/T
 import TextSelectingModal from '../../../components/formElements/SelectionElements/TextSelectingModal';
 import TimeSelectingArea from '../../../components/formElements/SelectionElements/TimeSelectingArea';
 import lightbolb from '../../../static/images/lightbulb.png';
-
-const selector = formValueSelector(SEARCH_FILTER_FORM);
 
 const pointerAnimation = radium.keyframes({
   '0%': {
@@ -103,7 +100,7 @@ const styles = {
     position: 'absolute',
     width: 61,
     right: -35,
-    bottom: 100,
+    bottom: 150,
   },
   submitBtn: {
     position: 'absolute',
