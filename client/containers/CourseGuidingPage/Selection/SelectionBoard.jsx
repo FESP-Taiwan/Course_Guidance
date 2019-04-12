@@ -89,12 +89,12 @@ const styles = {
     top: 0,
     right: '6.5%',
     border: 'solid 1px #cccccc',
-    opacity: 1,
-    transition: '0.5s',
-    transitionDelay: '1s',
-  },
-  submitDisabled: {
     opacity: 0,
+  },
+  submitDisplay: {
+    opacity: 1,
+    transitionDelay: '1s',
+    transitionDuration: '0.5s',
   },
   submitBtnWrapper: {
     position: 'absolute',
@@ -225,7 +225,7 @@ class SelectionBoard extends PureComponent<Props> {
               component={TextInputModal} />
           </div>
         </div>
-        <div style={[styles.submitArea, pageNumber !== 1 && styles.submitDisabled]}>
+        <div style={[styles.submitArea, pageNumber === 1 && styles.submitDisplay]}>
           <div style={styles.submitBtnWrapper}>
             <button
               key="submitBtn"
