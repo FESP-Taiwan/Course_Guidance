@@ -100,7 +100,7 @@ type Props = {
   setPageNumber: Function,
 };
 
-class MainPage extends PureComponent<Props> {
+class MainStartButton extends PureComponent<Props> {
   render() {
     const {
       pageNumber,
@@ -123,4 +123,4 @@ class MainPage extends PureComponent<Props> {
   }
 }
 
-export default radium(MainPage);
+export default radium(MainStartButton);

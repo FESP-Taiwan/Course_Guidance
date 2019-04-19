@@ -21,7 +21,6 @@ const styles = {
     letterSpacing: 1,
     transition: '0.5s',
     zIndex: 1000,
-    fontSize: 30,
     backgroundColor: 'transparent',
     ':focus': {
       outline: 'none',
@@ -53,6 +52,7 @@ type Props = {
   disabled: boolean,
   isOnClicked: boolean,
   value: string,
+  fontSize: number,
   onChange: Function,
   setFieldNumber?: Function,
 };
@@ -109,6 +109,7 @@ class TextInputSet extends PureComponent<Props, State> {
       onChange,
       value,
       setFieldNumber,
+      fontSize,
     } = this.props;
 
     const {
@@ -125,10 +126,11 @@ class TextInputSet extends PureComponent<Props, State> {
           type="text"
           style={[
             styles.textInput,
+            { fontSize: `${fontSize}px` },
             value ? {
-              paddingRight: `${277 - valueLength.length * 30}px`,
+              paddingRight: `${277 - valueLength.length * fontSize - (30 - fontSize) * 4}px`,
             } : {
-              paddingRight: `${277 - placeholderLength.length * 30}px`,
+              paddingRight: `${277 - placeholderLength.length * fontSize - (30 - fontSize) * 4}px`,
             },
             isOnClicked && styles.textInputClicked,
           ]}

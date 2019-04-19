@@ -6,6 +6,9 @@ import DropDownItem from './DropDownItem';
 
 const styles = {
   wrapper: {
+    position: 'absolute',
+    top: 40,
+    left: 0,
     width: 325,
     height: 0,
     overflow: 'auto',
@@ -13,7 +16,7 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'flex-end',
     marginTop: 0,
-    paddingRight: 20,
+    zIndex: 3000,
   },
   menuDisplay: {
     height: 200,
@@ -26,19 +29,23 @@ const styles = {
 type Props = {
   dropDownData: Array<string>,
   isAppear: boolean,
+  paddingRight: number,
   onChange: Function,
 };
 
 class DropDownList extends PureComponent<Props, State> {
   render() {
     const {
+      paddingRight,
       dropDownData,
       isAppear,
       onChange,
     } = this.props;
 
     return (
-      <div style={[styles.wrapper, isAppear && styles.menuDisplay]}>
+      <div style={[styles.wrapper, {
+        paddingRight: `${paddingRight}px`,
+      }, isAppear && styles.menuDisplay]}>
         {dropDownData.map(item => (
           <DropDownItem
             item={item}

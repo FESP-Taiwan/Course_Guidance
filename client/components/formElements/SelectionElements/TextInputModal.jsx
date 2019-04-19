@@ -14,6 +14,7 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+    position: 'relative',
   },
   modalUndisplay: {
     display: 'none',
@@ -41,6 +42,22 @@ class TextInputModal extends PureComponent<Props, State> {
     isOnClicked: false,
     disabled: true,
   };
+
+  componentDidUpdate(prevState) {
+    const {
+      input: {
+        onChange,
+      },
+    } = this.props;
+
+    const {
+      disabled,
+    } = this.state;
+
+    if (!prevState.disabled && disabled) {
+      onChange('');
+    }
+  }
 
   setFieldNumber(isFocus: boolean) {
     const {
@@ -83,6 +100,7 @@ class TextInputModal extends PureComponent<Props, State> {
           disabled={disabled}
           value={value}
           onChange={onChange}
+          fontSize={30}
           setFieldNumber={isFocus => this.setFieldNumber(isFocus)} />
       </div>
     );

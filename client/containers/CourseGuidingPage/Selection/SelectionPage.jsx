@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import SelectionBoard from './SelectionBoard';
 import * as CourseGuidingAction from '../../../actions/CourseGuiding';
 import backgroundCover from '../../../static/images/project-p1-bgi-cover2.png';
+import backIcon from '../../../static/images/backIcon.png';
 
 const styles = {
   pageWrapper: {
@@ -28,15 +29,28 @@ const styles = {
     backgroundImage: `url(${backgroundCover})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundSize: '100% 100%',
     padding: '18% 0 0 60%',
+  },
+  btn: {
+    position: 'absolute',
+    padding: 0,
+    border: 'none',
+    top: '50%',
+    left: 30,
+  },
+  icon: {
+    width: 30,
+    transition: '0.5s',
+    ':hover': {
+      transform: 'scale(1.5)',
+    },
   },
 };
 
 type Props = {
   pageNumber: number,
   setPageNumber: Function,
-  filterData: Object,
 };
 
 class SelectionPage extends PureComponent<Props> {
@@ -44,10 +58,7 @@ class SelectionPage extends PureComponent<Props> {
     const {
       pageNumber,
       setPageNumber,
-      filterData,
     } = this.props;
-
-    console.log('filterData: ', filterData);
 
     return (
       <div style={[styles.pageWrapper, {
@@ -56,6 +67,9 @@ class SelectionPage extends PureComponent<Props> {
         <div style={styles.mainWrapper}>
           <SelectionBoard />
         </div>
+        <button type="button" style={styles.btn} onClick={() => setPageNumber(0)}>
+          <img src={backIcon} alt="backIcon" style={styles.icon} />
+        </button>
       </div>
     );
   }
