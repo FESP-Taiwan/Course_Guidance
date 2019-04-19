@@ -10,6 +10,10 @@ import debug from 'debug';
 import { hot } from 'react-hot-loader';
 import { StyleRoot } from 'radium';
 import { Provider } from 'react-redux';
+import MainBoard from './containers/MainBoard';
+
+import './static/styles.css';
+
 
 // Containers
 
@@ -36,7 +40,9 @@ function App({
       <MemoryRouter>
         <StyleRoot style={styles.root}>
           <Router history={history}>
-            <h1>Hello World</h1>
+            <Switch>
+              <Route path="/" render={() => (<MainBoard store={store} />)} />
+            </Switch>
           </Router>
         </StyleRoot>
       </MemoryRouter>

@@ -1,0 +1,21 @@
+input::placeholder {
+  color: #333333;
+  opacity: 0.5;
+}
+
+.input::placeholder {
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 10px;
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
