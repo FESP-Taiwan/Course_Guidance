@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import radium from 'radium';
 import SelectionPage from './Selection/SelectionPage';
+import ExhibitionPage from './Exhibition/ExhibitionPage';
 
 type Props = {
 
@@ -16,6 +17,7 @@ class CourseGuidingPage extends PureComponent<Props> {
     return (
       <Fragment>
         <SelectionPage />
+        <ExhibitionPage />
       </Fragment>
     );
   }

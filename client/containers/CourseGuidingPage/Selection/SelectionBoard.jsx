@@ -145,17 +145,20 @@ type Props = {
   getFilterData: Function,
   handleSubmit: Function,
   pageNumber: number,
+  setPageNumber: Function,
 };
 
 class SelectionBoard extends PureComponent<Props> {
   submit(d) {
     const {
       getFilterData,
+      setPageNumber,
     } = this.props;
     console.log(d);
     getFilterData({
       ...d,
     });
+    setPageNumber(2);
   }
 
   render() {

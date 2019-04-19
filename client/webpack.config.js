@@ -29,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      API_HOST: `'${process.env.API_HOST || 'www.fesp-course.ml'}'`,
+      API_HOST: `'${process.env.API_HOST || 'http://www.fesp-course.ml'}'`,
       __DEV__: process.env.WEBPACK_MODE !== 'production',
     }),
     ...(process.env.WEBPACK_MODE !== 'production' ? developmentPlugins : productionPlugins),
