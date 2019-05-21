@@ -11,6 +11,7 @@ import { hot } from 'react-hot-loader';
 import { StyleRoot } from 'radium';
 import { Provider } from 'react-redux';
 import MainBoard from './containers/MainBoard';
+import StudyPage from './FespStudy/StudyPage';
 
 import './static/styles.css';
 
@@ -41,6 +42,7 @@ function App({
         <StyleRoot style={styles.root}>
           <Router history={history}>
             <Switch>
+              <Route exact path="/study" component={StudyPage} />
               <Route path="/" render={() => (<MainBoard store={store} />)} />
             </Switch>
           </Router>

@@ -48,6 +48,10 @@ type Props = {
 
 class MainBoard extends PureComponent<Props> {
   render() {
+    const {
+      store,
+    } = this.props;
+    console.log(store);
     return (
       <div style={styles.placement}>
         <div style={styles.screen}>
