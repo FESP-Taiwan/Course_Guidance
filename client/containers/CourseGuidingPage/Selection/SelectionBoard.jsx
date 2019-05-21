@@ -155,9 +155,7 @@ class SelectionBoard extends PureComponent<Props> {
       setPageNumber,
     } = this.props;
     console.log(d);
-    getFilterData({
-      ...d,
-    });
+    getFilterData(d);
     setPageNumber(2);
   }
 
@@ -265,6 +263,7 @@ const formHook = reduxForm({
     startClass: '',
     endClass: '',
     courseName: '',
+    teacherName: '',
   },
 });
 

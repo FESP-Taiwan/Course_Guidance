@@ -13,7 +13,7 @@ type State = {
 export default (state: State = {
   pageNumber: 0,
   fieldNumber: 0,
-  filterData: {},
+  filterData: [],
   dropDownData: {
     1: ['企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系', '企業管理學系'],
     2: ['一', '二', '三', '四'],
@@ -28,11 +28,17 @@ export default (state: State = {
         ...state,
         pageNumber: action.pageNum,
       };
-    case GET_FILTER_DATA:
+    case GET_FILTER_DATA: {
+      const actionData = Object.values(action);
+      const clearIndex = actionData.indexOf(undefined);
+      const dataList = [
+        ...actionData.slice(0, clearIndex),
+      ];
       return {
         ...state,
-        filterData: action.data,
+        filterData: dataList,
       };
+    }
     case SET_FIELD_NUMBER:
       return {
         ...state,

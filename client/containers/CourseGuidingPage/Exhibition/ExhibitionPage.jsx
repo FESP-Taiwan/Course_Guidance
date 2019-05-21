@@ -5,6 +5,7 @@ import radium from 'radium';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as CourseGuidingAction from '../../../actions/CourseGuiding';
+import ExhibitionBoard from './ExhibitionBoard';
 
 const styles = {
   pageWrapper: {
@@ -30,7 +31,7 @@ function SelectionPage({
     <div style={[styles.pageWrapper, {
       left: `-${pageNumber * 100}%`,
     }]}>
-      <span>Hello World</span>
+      <ExhibitionBoard />
     </div>
   );
 }
